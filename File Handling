@@ -1,0 +1,18 @@
+#include <stdio.h>
+
+int main() {
+    FILE *fp;
+    fp = fopen("data.txt", "w");   // write mode
+
+    if(fp == NULL) {
+        printf("File cannot be opened\n");
+        return 0;
+    }
+
+    fprintf(fp, "Hello Anshu!\n");
+    fprintf(fp, "Welcome to File Handling in C");
+
+    fclose(fp);
+    printf("Data written successfully");
+    return 0;
+}
