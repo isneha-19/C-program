@@ -1,0 +1,55 @@
+#include <iostream>
+using namespace std;
+
+// function to calculate factorial
+long long factorial(int n)
+{
+    long long fact = 1;
+    for(int i = 1; i <= n; i++)
+    {
+        fact = fact * i;
+    }
+    return fact;
+}
+
+int main()
+{
+    int n, r, choice;
+    long long result;
+
+    cout << "---- Permutation and Combination Calculator ----\n";
+    cout << "1. Permutation (nPr)\n";
+    cout << "2. Combination (nCr)\n";
+    cout << "Enter your choice: ";
+    cin >> choice;
+
+    cout << "Enter value of n: ";
+    cin >> n;
+    cout << "Enter value of r: ";
+    cin >> r;
+
+    if (r > n)
+    {
+        cout << "r cannot be greater than n";
+    }
+    else
+    {
+        switch(choice)
+        {
+            case 1:
+                result = factorial(n) / factorial(n - r);
+                cout << "Permutation (nPr) = " << result;
+                break;
+
+            case 2:
+                result = factorial(n) / (factorial(r) * factorial(n - r));
+                cout << "Combination (nCr) = " << result;
+                break;
+
+            default:
+                cout << "Invalid choice";
+        }
+    }
+
+    return 0;
+}
