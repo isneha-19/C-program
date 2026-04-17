@@ -1,0 +1,56 @@
+#include<stdio.h>
+
+int main()
+{
+    FILE *fp;
+    char ch;
+    int characters = 0, lines = 0, words = 0;
+    int freq[26] = {0};
+    int inWord = 0;
+
+    fp = fopen("input.txt", "r");   // open text file
+
+    if (fp == NULL)
+    {
+        printf("File not found!\n");
+        return 1;
+    }
+
+
+    fseek(fp, 0, SEEK_SET);
+
+    while ((ch = fgetc(fp)) != EOF)
+    {
+        characters++;
+
+        if (ch == '\n')
+            lines++;
+
+        if (isspace(ch))
+            inWord = 0;
+        else if (inWord == 0)
+        {
+            words++;
+            inWord = 1;
+        }
+        if (isalpha(ch))
+        {
+            ch = tolower(ch);
+            freq[ch - 'a']++;
+        }
+    }
+
+    fclose(fp);
+
+    printf("Number of characters = %d\n", characters);
+    printf("Number of lines = %d\n", lines);
+    printf("Number of words = %d\n", words);
+
+    printf("\nFrequency of alphabets:\n");
+    for (int i = 0; i < 26; i++)
+    {
+        printf("%c = %d\n", i + 'a', freq[i]);
+    }
+
+    return 0;
+}
