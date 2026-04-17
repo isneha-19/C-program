@@ -1,0 +1,28 @@
+#include <stdio.h>
+
+int sumOfDigits(int num) {
+    int sum = 0;
+
+    while(num != 0) {
+        sum = sum + (num % 10);  
+        num = num / 10;          
+    }
+
+    return sum;
+}
+
+int main() {
+    int number;
+
+    printf("Enter a five-digit number: ");
+    scanf("%d", &number);
+
+    if(number < 10000 || number > 99999) {
+        printf("Please enter a valid five-digit number.\n");
+    } else {
+        int result = sumOfDigits(number);
+        printf("Sum of digits = %d\n", result);
+    }
+
+    return 0;
+}
