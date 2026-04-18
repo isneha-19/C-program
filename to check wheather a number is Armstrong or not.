@@ -1,0 +1,53 @@
+#include <stdio.h>
+#include <math.h>
+
+int countDigits(int num) {
+    int count = 0;
+    while (num != 0) {
+        count++;
+        num = num / 10;
+    }
+    return count;
+}
+
+int power(int base, int exp) {
+    int result = 1;
+    for(int i = 1; i <= exp; i++) {
+        result = result * base;
+    }
+    return result;
+}
+
+int sumOfPoweredDigits(int num, int digits) {
+    int sum = 0;
+    while (num != 0) {
+        int digit = num % 10;
+        sum = sum + power(digit, digits);
+        num = num / 10;
+    }
+    return sum;
+}
+
+int isArmstrong(int num) {
+    int digits = countDigits(num);
+    int sum = sumOfPoweredDigits(num, digits);
+
+    if (sum == num)
+        return 1;
+    else
+        return 0;
+}
+
+int main() {
+    int number;
+
+    printf("Enter a number: ");
+    scanf("%d", &number);
+
+    if (isArmstrong(number))
+        printf("%d is an Armstrong number.\n", number);
+    else
+        printf("%d is NOT an Armstrong number.\n", number);
+
+    return 0;
+}
