@@ -1,0 +1,27 @@
+#include <stdio.h>  
+#include <string.h>
+int login_user() {
+    char name[20], pass[20];
+    int i, attempt;
+
+    printf("Enter username: ");
+    scanf("%s", name);
+
+    for(attempt = 1; attempt <= 3; attempt++) {
+        printf("Enter password: ");
+        scanf("%s", pass);
+
+        for(i = 0; i < count; i++) {
+            if(strcmp(u[i].uname, name) == 0 &&
+               strcmp(u[i].pass, pass) == 0) {
+                printf("Login success\n");
+                return 1;
+            }
+        }
+
+        printf("Wrong password\n");
+    }
+
+    printf("Too many attempts! Blocked\n");
+    return 0;
+}
