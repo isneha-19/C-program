@@ -1,0 +1,18 @@
+#include <stdio.h>
+
+void increase(int *num) {
+    (*num)++;   // Increase value by 1
+}
+
+int main() {
+    int value;
+
+    printf("Enter a number: ");
+    scanf("%d", &value);
+
+    increase(&value);   // Passing address
+
+    printf("Value after increment: %d\n", value);
+
+    return 0;
+}
